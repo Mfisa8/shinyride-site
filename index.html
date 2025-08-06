@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShinyRide Mobile Wash</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+
+    
+<header>
+  <h1>ShinyRide Mobile Wash</h1>
+  
+  <nav>
+  <ul>
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="services.html" class="nav-link">Services</a></li>
+    <li><a href="contact.html" class="nav-link">Book Now</a></li>
+    <li><a href="bookings.html" class="nav-link">My Bookings</a></li>
+  </ul>
+</nav>
+
+  
+</header>
+
+  </header>
+
+  <section class="hero">
+    <h2>We come to you!</h2>
+    <p>Fast, affordable, and eco-friendly mobile car washes wherever you are.</p>
+    <a href="contact.html" class="btn">Book a Wash</a>
+  </section>
+
+  <section class="features">
+    <h2>Why Choose Us?</h2>
+    <ul>
+      <li>✅ Convenient mobile service</li>
+      <li>✅ Affordable packages</li>
+      <li>✅ Eco-friendly products</li>
+      <li>✅ Satisfaction guaranteed</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ShinyRide Mobile Wash. All rights reserved.</p>
+  </footer>
+  <script>
+  const links = document.querySelectorAll('.nav-link');
+  const currentPage = window.location.pathname.split('/').pop();
+
+  links.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+      link.classList.add('active');
+    }
+  });
+</script>
+
+
+</body>
+</html>

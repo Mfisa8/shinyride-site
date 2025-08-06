@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book a Wash - ShinyRide</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header>
+    <h1>ShinyRide Mobile Wash</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="contact.html" class="nav-link active">Book Now</a></li>
+        <li><a href="bookings.html" class="nav-link">My Bookings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="booking-section">
+    <h2>Book Your Mobile Car Wash</h2>
+
+    <form id="bookingForm" class="booking-form">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="car-type">Car Type</label>
+      <input type="text" id="car-type" name="car-type" required />
+
+      <label for="service">Select Service</label>
+      <select id="service" name="service" required>
+        <option value="">-- Please select --</option>
+        <option value="Basic Rinse">Basic Rinse</option>
+        <option value="Premium Wash">Premium Wash</option>
+        <option value="Interior Detail">Interior Detail</option>
+        <option value="Full House">Full House</option>
+      </select>
+
+      <label for="date">Preferred Date</label>
+      <input type="date" id="date" name="date" required />
+
+      <label for="time">Preferred Time</label>
+      <input type="time" id="time" name="time" required />
+
+      <button type="submit">Submit Booking</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ShinyRide Mobile Wash. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("bookingForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const carType = document.getElementById("car-type").value;
+      const service = document.getElementById("service").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+
+      if (!confirm(`Hi ${name}, confirm booking for the "${service}" package on ${date} at ${time}?`)) {
+        alert("❌ Booking cancelled.");
+        return;
+      }
+
+      const booking = {
+        name,
+        email,
+        carType,
+        service,
+        date,
+        time
+      };
+
+      // Get existing bookings or create an empty array
+      const bookings = JSON.parse(localStorage.getItem("shinyBookings")) || [];
+
+      // Add new booking
+      bookings.push(booking);
+
+      // Save to local storage
+      localStorage.setItem("shinyBookings", JSON.stringify(bookings));
+
+      alert("✅ Booking confirmed! View it on the My Bookings page.");
+
+      // Redirect
+      window.location.href = "bookings.html";
+    });
+  </script>
+
+</body>
+</html>
